@@ -1,0 +1,85 @@
+#1. configue Git globally
+git config --global user.name "Ricardo RP Silva"
+git config --global user.email "ricrocha82@gmail.com"
+git config --global github.user "ricrocha82"
+# for windows
+git config --global core.autocrlf true 
+# for MAC
+git config --global core.autocrlf input
+git config --global core.editor "nano -w"
+# content of the git config file
+git config --global --list
+
+
+#2. first create a repository in Github website
+# get the SSH key
+C:\Users\rrocha\.ssh
+# type the following
+git clone git@github.com:ricrocha82/climate_viz.git
+
+# R Studio
+git remote add origin https://github.com/ricrocha82/climate_viz.git
+git remote add git@github.com:ricrocha82/climate_viz.git
+
+
+#3. git commands
+git status
+git add <file>
+git commit -m "message"
+git push
+git pull
+
+
+# if you create a folder and don't put anything there, git won't consider that the folder changed
+# create a folder
+mkdir <folder>
+# create a file
+touch <filename>
+
+
+
+#4. SSH Key
+# Using command line
+# https://happygitwithr.com/ssh-keys.html
+ssh-keygen -t ed25519 -C "your email"
+# Make sure ssh-agent is enabled. 
+ eval "$(ssh-agent -s)"
+  Agent pid #### # if ths appear it's ok
+# then add your key
+ ssh-add ~/.ssh/id_ed25519
+ 
+# Provide your key to Github
+copy the content fo the key to the clipboard
+GO to Github page ad Open Settings > SSH and GPG keys. Click “New SSH key”. 
+Paste your public key in the “Key” box. 
+# Test the connection
+ssh -T git@github.com 
+# if it's ok:
+Hi ricrocha82! You've successfully authenticated, but GitHub does not provide shell access.
+
+# OBS:
+RStudio can make you problems. 
+I solved copy and pasting the file C:\Users\rrocha\.ssh\known_hosts to the path /c/Program Files/RStudio/resources/app/resources/terminal/bash/.ssh/
+
+#5. cloning to a existing directory
+# Clone just the repository's .git folder (excluding files as they are already in
+# `existing-dir`) into an empty temporary directory
+git clone --no-checkout repo-to-clone existing-dir/existing-dir.tmp # might want --no-hardlinks for cloning local repo
+
+# Move the .git folder to the directory with the files.
+# This makes `existing-dir` a git repo.
+mv existing-dir/existing-dir.tmp/.git existing-dir/
+
+# Delete the temporary directory
+rmdir existing-dir/existing-dir.tmp
+cd existing-dir
+
+# git thinks all files are deleted, this reverts the state of the repo to HEAD.
+# WARNING: any local changes to the files will be lost.
+git reset --hard HEAD
+
+
+#6. Remote server
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+
+https://aragonalvarez.medium.com/how-to-setup-your-git-github-account-on-another-computer-abd32d712ef5

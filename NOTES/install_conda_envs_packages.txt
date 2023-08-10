@@ -1,0 +1,119 @@
+## installing conda
+# download and install miniconda
+# linux
+curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+# mac
+curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+# windows
+curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+# installing
+bash Miniconda3-latest-*.sh
+# click on the box to add Anaconda to my PATH environment variable
+# check conda version
+conda --version
+# update conda
+conda update -n base c- defaults conda
+# install mamba
+conda install -n base -c conda-forge mamba
+# create and environment
+conda create -n new-env
+# entering in an environment
+conda activate new-env
+# if Conda activate is not working on the Git Bash type this
+source C:/Users/rrocha/miniconda3/Scripts/activate
+# exiting
+conda deactivate
+# remove and environment
+mamba env remove -n new-env
+# installing a package
+conda install -c conda-forge -c bioconda -c defaults prodigal
+
+
+## Putting python to work on RStudio
+# be sure to have Git-bash for windows installed
+# after installing Miniconda, open RStudio
+# install reticulate and png packages
+# open git-bash and type
+which python # to see where python is
+# on Rstudio console type
+usethis::edit_r_profile()
+# and type
+Sys.setenv(RETICULATE_PYTHON = "C:\\Users\\username\\miniconda3\\python.exe")
+# save and restart R
+
+
+## Putting bash in Rstudio terminal
+# open the terminal options and change the shell program (need git-bash installed)
+
+
+## creating an environment in conda with R
+# first create an environment
+conda create -n new-env -c conda-forge -c bioconda -c R r-base=4.2 r-tidyverse=1.3.1
+# installing with r essentials
+conda create -n r_env r-essentials r-base
+# activate the env
+conda activate new-env
+mamba env list
+# checking paths
+echo $PATH
+# checking R
+which R
+R --version
+# configuring R in the new environment
+# create a Rprofilein in the new environment
+nano .Rprofile
+# open text editor
+atom .Rprofile
+# add the following
+env_index <- grep("envs/", .libPaths())
+.libPaths(c(.libPaths()[env_index], .libPaths()[-env_index]))
+# to install another package
+mamba install -n new-env -c conda-forge -c bioconda -c R r-gganimate
+# check if the package was installed in the right path
+find.package("gganimate")
+
+## SRA toolkit
+mamba create -n sra_tools -c bioconda -c conda-forge sra-tools
+
+conda activate sra_tools
+
+## installing packages for de novo assembly (--yes flag means answer "yes" for any question)
+mamba create -n de_novo_example -c bioconda -c conda-forge fastqc \
+             trimmomatic spades megahit quast \
+             bowtie2 anvio centrifuge java-jdk --yes
+			 
+# you may or may not need the java-jdk, but it won't hurt our environment 
+
+
+## Creating an environment from a yaml file
+# it is useful for reproducibility 
+# (other users get this file and download all the packages used on the analyses)
+# open text editor 
+atom .
+# open the file and save as config.yml
+name: new-env
+channels:
+    - conda-forge
+    - bioconda
+    - defaults
+	- R
+dependencies:
+	- python=3.9
+	- prodigal
+    - r-base=4.2
+	- r-tidyverse=1.3.1
+# create and environment from the yaml file
+conda env create -f config.yaml
+conda active new-env
+
+# fire up R
+R
+# if the libPath is diffrent go back and change the Rprofile file
+
+
+
+## sources:
+https://www.youtube.com/watch?v=QI2Qg_1aySc&t=392s
+https://www.youtube.com/watch?v=U3ByGh8RmSc&t=621s
+https://astrobiomike.github.io/unix/conda-intro
