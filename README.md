@@ -1,2 +1,2 @@
-# metaG
-codes and scripts to run MetaG tools
+# metagenomic scripts
+codes and scripts to run metagenomics analysis from raw read
