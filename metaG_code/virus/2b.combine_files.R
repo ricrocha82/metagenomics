@@ -1,5 +1,9 @@
 #!/usr/bin/Rscript
 
+# install pacman package and load the other packages
+# if (!require("pacman", quietly = TRUE))
+#     install.packages("pacman",)
+
 pacman::p_load(tidyverse, vroom) 
 
 samples = '/fs/ess/PAS1117/ricardo/metaG/metagenomics/project1/samples.txt'

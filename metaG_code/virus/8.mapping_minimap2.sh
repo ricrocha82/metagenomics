@@ -29,7 +29,7 @@ if [ "$prefix" == "prefix" ]; then continue; fi
     scaffold_file="$directory"/virus/Batch1_final_vOTUs.fasta
     index="$directory"/virus/Batch1_final_vOTUs.mmi
 
-    outbam="$directory"/2.virus_mapping/${prefix}_vs_batch1vOTUs_sorted.bam
+    outbam="$directory"/virus/2.virus_mapping/${prefix}_vs_batch1vOTUs_sorted.bam
 
     echo "indexing"
     # indexing
