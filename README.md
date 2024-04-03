@@ -56,19 +56,7 @@ Configure Input Data: Prepare your input data by organizing raw sequencing reads
 
 Run the Pipeline: Execute the Nextflow command to run the pipeline:
 
-css
-Copy code
-nextflow run main.nf --input <input-directory> --output <output-directory>
-Pipeline Structure
-The pipeline consists of the following main processes:
 
-Quality Control: Performs quality control on raw sequencing reads to remove low-quality bases and adapter sequences.
-
-Contamination Removal: Filters out contaminant sequences using reference databases and stringent filtering criteria.
-
-Assembly: Assembles high-quality reads into longer contiguous sequences (contigs) using the SPAdes assembler.
-
-Taxonomic Classification: Classifies assembled contigs into taxonomic groups using Kraken or MetaPhlAn.
 
 Contributions
 Contributions to this pipeline are welcome! If you encounter any issues, have suggestions for improvements, or would like to add new features, please open an issue or submit a pull request.
