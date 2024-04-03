@@ -50,8 +50,6 @@ conda env create -f nextflow.yaml
 
 To run the pipeline, follow these steps:
 
-Install Dependencies: Ensure that Nextflow is installed on your system. Additionally, install any required dependencies specified in the environment.yml file.
-
 Configure Input Data: Prepare your input data by organizing raw sequencing reads in the appropriate directory structure.
 
 Run the Pipeline: Execute the Nextflow command to run the pipeline:
