@@ -50,14 +50,15 @@ conda env create -f nextflow.yaml
 
 To run the pipeline, follow these steps:
 
-Configure Input Data: Prepare your input data by organizing raw sequencing reads in the appropriate directory structure.
+**Configure Input Data:** Prepare your input data by organizing raw sequencing reads in the appropriate directory structure.
 
-Run the Pipeline: Execute the Nextflow command to run the pipeline:
+**Run the Pipeline:** Execute the Nextflow command to run the pipeline:
 
 
 
-Contributions
+### Contributions
+
 Contributions to this pipeline are welcome! If you encounter any issues, have suggestions for improvements, or would like to add new features, please open an issue or submit a pull request.
 
-License
+### License
 This project is licensed under the MIT License.
