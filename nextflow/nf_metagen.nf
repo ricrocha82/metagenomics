@@ -267,7 +267,7 @@ process REMOVE_SING {
     tuple val(sample_id), path(sing_qc)
 
   output:
-    path("${sample_id}_singletons_clean.fastq.gz"), emit: sing_clean
+    tuple val(sample_id), path("${sample_id}_singletons_clean.fastq.gz"), emit: sing_clean
 
 
   script:
@@ -292,20 +292,32 @@ process ASSEMBLY {
 
   tag "Assembly on $sample_id"
 
-  publishDir params.assembly, mode:'copy', pattern: "*.fasta"
+  publishDir (
+        path: params.assembly,
+        mode: "copy",
+        pattern: "${sample_id}/*.fasta",
+        saveAs: { fn ->
+            if (fn.endsWith("contigs.fasta")) { "${sample_id}_contigs.fasta" }
+            else { "${sample_id}_scaffolds.fasta" }
+        }
+    )
+
+  // publishDir params.assembly, mode:'copy', pattern: "${sample_id}/contigs.fasta", saveAs: { filename -> "contigs_$filename.fasta" }
+  // publishDir params.assembly, mode:'copy', pattern: "${sample_id}/scaffolds.fasta"
 
   input:
     tuple val(sample_id), path(reads_clean), path(sing_clean)
 
   output:
-    tuple val(sample_id), path("3.assembly_${sample_id}") , emit: assembly
+    tuple val(sample_id), path("${sample_id}/contigs.fasta") , emit: assembly_contigs
+    tuple val(sample_id), path("${sample_id}/scaffolds.fasta") , emit: assembly_scaffolds
 
   script:
     def (r1, r2) = reads_clean
     def (sing_read) = sing_clean
   """
 metaspades.py -1 ${r1} -2 ${r2} -s ${sing_read} \
-        -o 3.assembly_${sample_id} --threads 28 \
+        -o ${sample_id} --threads 28 \
          -m 140 
 
   """
@@ -366,7 +378,7 @@ workflow {
       remove_sing_ch = REMOVE_SING(FILTERING.out.sing_qc)
 
         // Combine channels from REMOVE and REMOVE_SING
-        assembly_input = remove_ch.combine(remove_sing_ch)
+        assembly_input = remove_ch.combine(remove_sing_ch, by: 0)
 
         assembly_ch = ASSEMBLY(assembly_input)
         // ASSEMBLY(REMOVE.out.reads_clean, REMOVE_SING.out.sing_clean)
