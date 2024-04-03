@@ -2,8 +2,8 @@
 
 This repository contains a comprehensive metagenomic analysis pipeline designed for the study of viruses and prokaryotes in environmental or human/animal samples. The pipeline is also implemented in Nextflow, making it scalable, reproducible, and easy to deploy on various computing environments.
 
-- Metagenomics analysis pipeline (can be implemented using bash or SLURM jobs)
-- Nextflow pipeline: pre-processing samples, R/Python for statistical analysis
+- [Metagenomics analysis pipeline](https://github.com/ricrocha82/metagenomics/tree/main/metaG_code): (can be implemented using bash or SLURM jobs)
+- [Nextflow pipeline](https://github.com/ricrocha82/metagenomics/tree/main/nextflow): pre-processing samples, R/Python for statistical analysis
 - Command line for each processing steps are described in below.
 
 
@@ -41,7 +41,7 @@ conda create -n quality_control -c conda-forge -c bioconda -c agbiome fastqc mul
 conda create -n nextflow -c bioconda nextflow
 ```
 
-or you can use the .yaml files (recommended - version control)
+or you can use the [.yml files](https://github.com/ricrocha82/metagenomics/tree/main/config_files) (recommended - version control)
 
 ```
 conda env create -f quality_control.yaml
