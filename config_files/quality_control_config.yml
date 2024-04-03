@@ -1,0 +1,12 @@
+name: quality_control
+channels:
+    - conda-forge
+    - bioconda
+    - defaults
+    - agbiome
+dependencies:
+    - python = 3.10
+    - fastqc = 0.12.1
+    - multiqc = 1.14
+    - trimmomatic = 0.39
+    - bbtools = 37.62

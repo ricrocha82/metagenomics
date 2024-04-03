@@ -1,0 +1,10 @@
+name: mapping
+channels:
+    - conda-forge
+    - bioconda
+    - defaults
+dependencies:
+    - python = 3.10
+    - bowtie2 = 2.5.1
+    - bwa = 0.7.17
+    - samtools = 1.17

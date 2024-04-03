@@ -1,0 +1,10 @@
+name: nf
+channels:
+    - conda-forge
+    - bioconda
+    - defaults
+dependencies:
+    - nextflow=23.10.1
+
+# to update the env
+# conda env update --file nextflow.yml --prune

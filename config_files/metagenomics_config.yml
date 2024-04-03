@@ -1,0 +1,26 @@
+name: metagenomics
+channels:
+    - conda-forge
+    - bioconda
+    - agbiome #bbtools
+    - defaults
+dependencies:
+    - python = 3.10 # 2021 python stable
+    - bbtools = 37.62 # quality control
+    - spades = 3.15.5 # assembly
+    - bwa = 0.7.17 # read mapping
+    - metabat2 = 2.15 # binning
+    - magpurify = 2.1.2 # MAG cleaning
+    - checkm-genome = 1.2.2 # MAG quality
+    - drep = 3.4.3 # MAG dereplication
+    - gtdbtk = 2.3.0 # tax assign
+    - dram = 1.4.6 # annotation
+    - antismash = 6.1.1 # biosynthetic genes
+    - coverm = 0.6.1 # coverage
+
+
+
+# create and environment from the yaml file
+# conda env create -f [config.yaml] --yes
+# conda active [new-env]
+    
