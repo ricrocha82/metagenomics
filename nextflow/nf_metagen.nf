@@ -38,7 +38,8 @@ samples_ch = Channel
 // Defining the process that is executed
 process FASTQC {
 
-    conda '/users/PAS1117/ricrocha82/miniconda3/envs/quality_control'
+    // conda "${launchDir}/config_files/quality_control_config.yml" 
+    conda '/users/PAS1117/ricrocha82/miniconda3/envs/quality_control' // use -with-conda
 
     // print a message in the process
     tag "FASTQC on $sample_id" 
