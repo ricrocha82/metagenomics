@@ -136,6 +136,9 @@ sudo apt install r-base-dev
 sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 # start R
 R
+# some packages can't be updated because they need adm permision
+sudo R
+update.packages()
 
 
 
