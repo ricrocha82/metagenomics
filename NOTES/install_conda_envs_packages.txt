@@ -130,6 +130,10 @@ sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_
 sudo apt-get install build-essential 
 # install R
 sudo apt install --no-install-recommends r-base
+# to use install.packages()
+sudo apt install r-base-dev
+# to install packages like tidyverse (system dependencies)
+sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 # start R
 R
 
@@ -139,3 +143,4 @@ R
 https://www.youtube.com/watch?v=QI2Qg_1aySc&t=392s
 https://www.youtube.com/watch?v=U3ByGh8RmSc&t=621s
 https://astrobiomike.github.io/unix/conda-intro
+https://blog.zenggyu.com/posts/en/2018-01-29-installing-r-r-packages-e-g-tidyverse-and-rstudio-on-ubuntu-linux/
